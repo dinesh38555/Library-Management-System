@@ -154,13 +154,3 @@ Ideas for features include:
 ## 📄 License
 
 This project is licensed under the MIT License.
-
------
-
-Let me know if you'd like help with:
-
-  - Adding a **GIF/screenshot** for the README
-  - Writing a **project summary for your resume**
-  - Or converting this into a **GUI-based version** later
-
-You're all set to show this off now\! 🚀
