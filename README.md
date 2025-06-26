@@ -117,13 +117,18 @@ Admin options include:
   * Users can pay partial or full fines using the menu.
   * Admin can track total fines collected across all users.
 
+
 ### 📊 Demo Tips
 
-Try the following:
+To effectively test the fine system without waiting:
 
-  * Borrow a book, then manipulate the system date (e.g., `book.setBorrowedDate(LocalDate.now().minusDays(10));` in code) to trigger fine calculation upon return.
-  * Use the "Pay the pending fines" option to clear dues.
-  * Switch to admin mode to view logs and total collected fines.
+* **Simulate a late return:**
+    1.  Borrow a book as a user.
+    2.  **Temporarily modify the `borrowedDate`** in your code (e.g., in `LibraryService.java`, you can set `book.setBorrowedDate(LocalDate.now().minusDays(10));`). **Remember to remove this line after testing.**
+    3.  Return the book to observe the fine calculation.
+* **Pay the fine:** Use the "Pay the pending fines" option from the user menu.
+* **Verify as Admin:** Switch to admin mode to view transaction logs and total collected fines.
+
 
 ### 📝 Notes
 
