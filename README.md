@@ -1,108 +1,161 @@
-📚 Library Management System (Java Console Application)
-A feature-rich Library Management System built in Java using the console. This project is designed to manage library operations such as book borrowing, returning, fine tracking, and transaction logging — all with persistent storage using serialization.
+# 📚 Library Management System (Java Console Application)
 
-✅ Features
-📖 Book Management (Add, Delete, Search, List)
+A feature-rich **Library Management System** built in Java using the console. This project is designed to manage library operations such as book borrowing, returning, fine tracking, and transaction logging — all with persistent storage using serialization.
 
-👤 User Registration & Login (with borrowing history)
+-----
 
-🔄 Borrow & Return Books
+## ✅ Features
 
-⏰ Due Date Tracking (7-day deadline)
+  - 📖 **Book Management**
+      - Add, Delete, Search, List books
+  - 👤 **User Registration & Login**
+      - Each user has their own borrowing history
+  - 🔄 **Borrow & Return Books**
+      - Books can only be borrowed if they are available
+  - ⏰ **Due Date Tracking**
+      - Books must be returned within **7 days**
+  - 💰 **Fine System**
+      - ₹10/day fine after due date
+      - Borrowing is blocked if **outstanding fine \> ₹50**
+      - Users can pay partial or full fine via "Pay Fine" menu
+  - 📂 **Data Persistence**
+      - All user and book data is stored using `.ser` files
+  - 🧾 **Transaction Logging**
+      - All borrow and return operations are logged to a text file
+  - 📈 **Admin Dashboard**
+      - View total fines collected across all users
+  - 📑 **Export to CSV**
+      - Export current book list to `books.csv`
+  - 🔒 **Admin Mode**
+      - Protected with password (`admin123` by default)
 
-💰 Fine Calculation & Payment
+-----
 
-₹10/day after due date
+## 🧪 Sample Data
 
-Block borrowing if fine > ₹50
+The repository includes a sample `books.csv` file under `data/` so you can test the system immediately after cloning. Other files like `.ser` and logs are generated after first run and are **excluded from GitHub** using `.gitignore`.
 
-📂 Data Persistence using .ser files
+-----
 
-📈 Track Total Fines Collected (admin dashboard)
+## 🛠️ Technologies Used
 
-📑 Export to CSV (books list)
+  - **Language:** Java (Object-Oriented Programming, Collections)
+  - **Persistence:** Java Serialization (`.ser` files)
+  - **Logging:** Text-based logging via `transaction_log.txt`
+  - **I/O:** Reading/writing CSV, file-based storage
 
-🧾 Transaction Logging (borrow/return history)
+-----
 
-🔒 Admin Mode (password-protected)
+## 📁 Project Structure
 
-🧪 Sample Data
-The project includes sample book data (data/books.csv) so you can test immediately after cloning.
-
-🛠️ Technologies Used
-Language: Java (OOP + Collections)
-
-Persistence: Java Serialization
-
-Logging: Custom text-based transaction log
-
-File I/O: CSV export, .ser binary storage
-
-📁 Project Structure
-bash
-Copy
-Edit
+```
 LibraryManagementSystem/
 │
-├── data/                     # Stores persistent and runtime data
-│   ├── books.csv             # Sample data (tracked)
-│   ├── users_data.ser        # User data (runtime)
-│   ├── library_data.ser      # Book state (runtime)
-│   └── transaction_log.txt   # All borrow/return logs (runtime)
+├── data/ # Stores persistent and runtime data
+│ ├── books.csv # Sample book data (versioned)
+│ ├── users_data.ser # Saved user objects (ignored in Git)
+│ ├── library_data.ser # Saved book objects (ignored in Git)
+│ └── transaction_log.txt # Log of all transactions (ignored in Git)
 │
-├── src/
-│   ├── Main.java
-│   ├── models/
-│   │   ├── Book.java
-│   │   └── User.java
-│   ├── services/
-│   │   ├── LibraryService.java
-│   │   └── FileHandler.java
-│   └── utils/
-│       └── TransactionLogger.java
+├── src/ # Java source code
+│ ├── Main.java # Entry point
+│ ├── models/
+│ │ ├── Book.java
+│ │ └── User.java
+│ ├── services/
+│ │ ├── LibraryService.java
+│ │ └── FileHandler.java
+│ └── utils/
+│ └── TransactionLogger.java
 │
-├── README.md
-└── .gitignore
-🚀 How to Run
-Clone the repo
+├── README.md # This file
+└── .gitignore # Git ignore rules
+```
 
-bash
-Copy
-Edit
-git clone https://github.com/dinesh38555/Library-Management-System.git
-cd Library-Management-System
-Compile the code
+## 🚀 How to Run
 
-bash
-Copy
-Edit
-javac -d bin src/**/*.java
-Run the project
+1.  **Clone the repository**
 
-bash
-Copy
-Edit
-java -cp bin Main
-Follow the console menu to interact (user or admin)
+    ```bash
+    git clone https://github.com/dinesh38555/Library-Management-System.git
+    cd Library-Management-System
+    ```
 
-🔐 Admin Login
-Default Admin Password: admin123
-(Can be modified in LibraryService.java)
+2.  **Compile the Java code**
 
-📊 Demo Capabilities
-Borrow a book → Wait 7+ days → Try returning → Pay fine
+    ```bash
+    javac -d bin src/**/*.java
+    ```
 
-Admin → View total fines collected → Export books to CSV
+3.  **Run the application**
 
-📝 Notes
-Serialized files and logs are ignored in GitHub via .gitignore
+    ```bash
+    java -cp bin Main
+    ```
 
-Only books.csv is tracked for demo/test purposes
+4.  **Use the Console Menu**
 
-Project is self-contained and runs entirely on the console
+    Choose between User or Admin access. Register/Login → Borrow books → Return books → Pay fines.
 
-📣 Contributions
-Want to improve features or add GUI version (JavaFX/Swing)? Feel free to fork and raise a pull request!
+### 🔐 Admin Login
 
-📄 License
+Default Password: `admin123`
+
+*(Can be changed in `LibraryService.java`'s `adminPassword` field)*
+
+Admin options include:
+
+  * View all transaction logs
+  * View total fines collected
+  * Export books list to CSV
+
+### 💵 Fine System Logic
+
+  * Every borrowed book has a 7-day deadline.
+  * After 7 days, a fine of ₹10/day is applied.
+  * Borrowing is blocked until the total outstanding fine is ₹50 or less.
+  * Users can pay partial or full fines using the menu.
+  * Admin can track total fines collected across all users.
+
+### 📊 Demo Tips
+
+Try the following:
+
+  * Borrow a book, then manipulate the system date (e.g., `book.setBorrowedDate(LocalDate.now().minusDays(10));` in code) to trigger fine calculation upon return.
+  * Use the "Pay the pending fines" option to clear dues.
+  * Switch to admin mode to view logs and total collected fines.
+
+### 📝 Notes
+
+  * Runtime data (`*.ser`, `transaction_log.txt`) is not pushed to GitHub.
+  * Only `books.csv` is tracked for demo/testing.
+  * The entire application runs in the console — no GUI required. You can easily extend this to a JavaFX/Swing GUI.
+
+-----
+
+## 📣 Contributions
+
+Want to improve this system? Feel free to fork the repository and raise a pull request\!
+Ideas for features include:
+
+  * GUI (JavaFX or Swing)
+  * Role-based access
+  * Search filters
+  * REST API backend
+  * SQLite or MySQL integration
+
+-----
+
+## 📄 License
+
 This project is licensed under the MIT License.
+
+-----
+
+Let me know if you'd like help with:
+
+  - Adding a **GIF/screenshot** for the README
+  - Writing a **project summary for your resume**
+  - Or converting this into a **GUI-based version** later
+
+You're all set to show this off now\! 🚀
