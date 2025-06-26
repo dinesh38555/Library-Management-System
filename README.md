@@ -1,4 +1,10 @@
 # 📚 Library Management System (Java Console Application)
+![Java](https://img.shields.io/badge/Java-Console--App-blue?logo=java&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey)
+![Status](https://img.shields.io/badge/Status-Stable-brightgreen)
+![Data Persistence](https://img.shields.io/badge/Data-Persistent%20Storage-yellow)
+![Logging](https://img.shields.io/badge/Logging-Enabled-important)
 
 A feature-rich **Library Management System** built in Java using the console. This project is designed to manage library operations such as book borrowing, returning, fine tracking, and transaction logging — all with persistent storage using serialization.
 
